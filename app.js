@@ -176,14 +176,23 @@ function updateCartModal() {
     }
 }
 
-// Səbətdəki məhsulun miqdarını artırıb-azaltmaq üçün funksiya
+// Səbətdəki məhsulu tam silmək üçün funksiya
+function removeFromCart(item) {
+    cart = cart.filter(cartItem => cartItem.id !== item.id); // Səbətdən məhsulu silirik
+    updateCartModal(); // Yenilənmiş səbəti göstəririk
+}
+
+// Səbətdəki məhsulun miqdarını artırıb-azaltmaq və silmək üçün funksiya
 function createQuantityControlForCart(item) {
     const inputQuantity = createElement('input', { classList: ['form-control', 'w-25'], type: 'text', value: item.quantity });
 
     const btnMinus = createElement('button', { classList: ['btn', 'btn-sm', 'btn-outline-secondary'], onclick: () => adjustCartItemQuantity(item, inputQuantity, -1) }, ['-']);
     const btnPlus = createElement('button', { classList: ['btn', 'btn-sm', 'btn-outline-secondary'], onclick: () => adjustCartItemQuantity(item, inputQuantity, 1) }, ['+']);
+    
+    // Yeni silmə düyməsi
+    const btnRemove = createElement('button', { classList: ['btn', 'btn-sm', 'btn-danger'], onclick: () => removeFromCart(item) }, ['Remove']);
 
-    return createElement('div', { classList: ['d-flex', 'align-items-center', 'gap-2'] }, [btnMinus, inputQuantity, btnPlus]);
+    return createElement('div', { classList: ['d-flex', 'align-items-center', 'gap-2'] }, [btnMinus, inputQuantity, btnPlus, btnRemove]);
 }
 
 // Səbətdəki məhsulun miqdarını tənzimləmək üçün funksiya

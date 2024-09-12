@@ -25,7 +25,11 @@
 .cart-item .item-price {
     font-size: 1rem;
 }
-
+/* Cart button adjustments */
+#btnShowCart {
+    max-width: 200px; 
+    width: auto;     
+  }
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .col-md-3 {
@@ -62,4 +66,15 @@
     .cart-item .item-name, .cart-item .item-price {
         font-size: 1rem;
     }
+    #btnShowCart {
+        max-width: 100%; 
+        font-size: 0.9rem; 
+        padding: 10px;
+      }
+    
+      .dropdown-toggle {
+        max-width: 100%; 
+        font-size: 0.9rem;
+        padding: 10px;
+      }
 }
